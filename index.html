@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Employee Information Form</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 40px;
+    }
+    form {
+      max-width: 600px;
+    }
+    label {
+      display: block;
+      margin-top: 15px;
+      font-weight: bold;
+    }
+    input, select, textarea {
+      width: 100%;
+      padding: 8px;
+      margin-top: 5px;
+      box-sizing: border-box;
+    }
+    textarea {
+      resize: vertical;
+    }
+    button {
+      margin-top: 20px;
+      padding: 10px 20px;
+      font-size: 16px;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Employee Information Form</h2>
+
+  <form action="submit" method="post">
+    
+    <label for="name">Full Name</label>
+    <input type="text" id="name" name="name" required>
+
+    <label for="id">Employee ID</label>
+    <input type="text" id="id" name="id" required>
+
+    <label for="age">Age</label>
+    <input type="number" id="age" name="age" min="18" required>
+
+    <label for="emailid">Email ID</label>
+    <input type="email" id="emailid" name="emailid" required>
+
+    <label for="phone">Phone Number</label>
+    <input type="tel" id="phone" name="phone" required pattern="[0-9]{10}" placeholder="Enter 10-digit phone number">
+
+    <label for="gender">Gender</label>
+    <select id="gender" name="gender" required>
+      <option value="">--Select--</option>
+      <option value="male">Male</option>
+      <option value="female">Female</option>
+      <option value="other">Other</option>
+    </select>
+
+    <label for="city">City</label>
+    <input type="text" id="city" name="city" required>
+
+    <label for="state">State</label>
+    <input type="text" id="state" name="state" required>
+
+    <label for="country">Country</label>
+    <input type="text" id="country" name="country" required>
+
+    <label for="address">Address</label>
+    <textarea id="address" name="address" rows="4" required></textarea>
+
+    <label for="department">Department</label>
+    <input type="text" id="department" name="department" required>
+
+    <label for="jobrole">Job Role</label>
+    <input type="text" id="jobrole" name="jobrole" required>
+
+    <label for="experience">Experience (in years)</label>
+    <input type="number" id="experience" name="experience" min="0" step="0.1" required>
+
+    <label for="salary">Salary</label>
+    <input type="number" id="salary" name="salary" min="0" step="0.01" required>
+
+    <button type="submit">Submit</button>
+  </form>
+
+</body>
+</html>
+</body>
+</html>
