@@ -1,6 +1,10 @@
 package com.servlet;
 
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -44,19 +48,64 @@ public class Employee extends HttpServlet {
 	    String salary=req.getParameter("salary");
 	    int sal=Integer.parseInt(salary);
 	    
-	    System.out.println(name);
-	    System.out.println(id);
-	    System.out.println(age);
-	    System.out.println(email);
-	    System.out.println(phoneNo);
-	    System.out.println(gender);
-	    System.out.println(state);
-	    System.out.println(country);
-	    System.out.println(address);
-	    System.out.println(department);
-	    System.out.println(role);
-	    System.out.println(exp);
-	    System.out.println(sal);
+	    System.err.println(name);
+	    System.err.println(id);
+	    System.err.println(age);
+	    System.err.println(email);
+	    System.err.println(phoneNo);
+	    System.err.println(gender);
+	    System.err.println(state);
+	    System.err.println(country);
+	    System.err.println(address);
+	    System.err.println(department);
+	    System.err.println(role);
+	    System.err.println(exp);
+	    System.err.println(sal);
+	    
+	  PrintWriter out=responce.getWriter();
+	   /* out.println(name);
+	    out.println(id);
+	    out.println(age);
+	    out.println(email);
+	    out.println(gender);
+	    out.println(exp);*/
+	    
+	  try {
+		    Class.forName("com.mysql.cj.jdbc.Driver");
+		    Connection c = DriverManager.getConnection(
+		        "jdbc:mysql://localhost:33061/employee", "root", "Nandini@2806");
+
+		    PreparedStatement pst = c.prepareStatement(
+		        "INSERT INTO employee(name, id, age, email, phoneNo, gender, state, country, address, department, role, exp, sal) " +
+		        "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+
+		    pst.setString(1, name);
+		    pst.setInt(2, id);
+		    pst.setInt(3, age);
+		    pst.setString(4, email);
+		    pst.setLong(5, phoneNo);
+		    pst.setString(6, gender);
+		    pst.setString(7, state);
+		    pst.setString(8, country);
+		    pst.setString(9, address);
+		    pst.setString(10, department);
+		    pst.setString(11, role);
+		    pst.setInt(12, exp);
+		    pst.setInt(13, sal);
+
+		    int check = pst.executeUpdate();
+		    if (check > 0) {
+		        out.println("<h1 style='background-color:green;'>Data Inserted</h1>");
+		    } else {
+		        out.println("<h1 style='background-color:red;'>Data Not Inserted</h1>");
+		    }
+
+		    c.close();
+		} catch (Exception e) {
+		    out.println(e.getMessage());
+		}
+
+	    
 	     
 	     
 	     
